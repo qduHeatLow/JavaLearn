@@ -194,3 +194,27 @@ public class Main{
 
 }
 ```
+### 反射
+1. 类加载后会提取类的信息生成一个Class对象放在内存中，反射则利用该Class对象来获取类信息和操作
+2. 可通过类名.class关键字或者Class.forName("包名.类名")或者通过实例对象获取对象.getClass()
+   注意Class类也是**泛型**类<> 可以使用通配符?
+   ```java
+      Class<String> stringClass = String.class;
+      Class<?> stringClass = Class.forName("java.lang.String");
+      Class<String> stringClass = new String("str").getClass();
+   ```
+3. JVM中每个类始终只存在**一个**Class对象
+4. 基本类型没法不是类，但是可以获得int.class，结果是：
+   int.class == Integer.TYPE == int
+   Integer.class == java.lang.Integer 包装类型的Class对象并不是基本类型Class对象
+5. 数组类也可以：Class<String[]> clazz = String[].class; 从而得到一些信息
+   注意数组类的类名开头都是[
+6. instanceof判断一个对象是否为此接口或是类的实现或是子类
+7. getInterfaces() 获得接口们：
+   Class<?>[] clazz = ArrayList.class.getInterfaces();
+8. ~~感觉暂时不重要 可跳过~~Type类型 一般有泛型时可以用
+   ParameterizedType type = (ParameterizedType) ArrayList.class.getGenericSuperClass();
+   获取父类的参数化类型
+   获取实际类型：Typep[] types = type.getActualTypeArguments
+### 反射操作
+1.创建对象：clazz.newInstance() 但是只适用于默认无参数构造函数
