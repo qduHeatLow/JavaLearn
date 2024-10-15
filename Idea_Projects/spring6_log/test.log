@@ -1,0 +1,8 @@
+16:26:55.185 DEBUG org.springframework.context.support.AbstractApplicationContext 630 prepareRefresh - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@7cf6a5f9
+16:26:55.314 DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider 440 scanCandidateComponents - Identified candidate component class: file [D:\JavaCode\Idea_Projects\Spring6\spring6_ioc_annotation\target\classes\com\huiqin\User.class]
+16:26:55.332 DEBUG org.springframework.beans.factory.xml.XmlBeanDefinitionReader 393 doLoadBeanDefinitions - Loaded 5 bean definitions from class path resource [bean.xml]
+16:26:55.348 DEBUG org.springframework.beans.factory.support.DefaultSingletonBeanRegistry 225 getSingleton - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+16:26:55.365 DEBUG org.springframework.beans.factory.support.DefaultSingletonBeanRegistry 225 getSingleton - Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerProcessor'
+16:26:55.366 DEBUG org.springframework.beans.factory.support.DefaultSingletonBeanRegistry 225 getSingleton - Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerFactory'
+16:26:55.367 DEBUG org.springframework.beans.factory.support.DefaultSingletonBeanRegistry 225 getSingleton - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+16:26:55.370 DEBUG org.springframework.beans.factory.support.DefaultSingletonBeanRegistry 225 getSingleton - Creating shared instance of singleton bean 'user'
