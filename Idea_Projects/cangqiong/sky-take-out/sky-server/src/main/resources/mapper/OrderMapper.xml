@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sky.mapper.OrderMapper">
+    <update id="update">
+        update orders
+        <set>
+            <if test="status!=null">status=#{status},</if>
+            <if test="rejectionReason">rejection_reason=#{rejectionReason},</if>
+            <if test="cancelReason">cancel_reason=#{cancelReason},</if>
+            <if test="cancelTime">cancel_time=#{cancelTime},</if>
+        </set>
+
+        where id = #{id}
+    </update>
+    <select id="page" resultType="Orders">
+        select * from orders
+        <where>
+            <if test="number != null and number!=''">
+                and number like concat('%',#{number},'%')
+            </if>
+            <if test="phone != null and phone!=''">
+                and phone like concat('%',#{phone},'%')
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="beginTime != null">
+                and order_time &gt;= #{beginTime}
+            </if>
+            <if test="endTime != null">
+                and order_time &lt;= #{endTime}
+            </if>
+        </where>
+        order by order_time desc
+    </select>
+    <select id="sumTurnoverByMap" resultType="java.lang.Double">
+        select sum(amount) from orders where 1 = 1
+        <if test="beginOfTheDate!=null">and order_time &gt; #{beginOfTheDate} </if>
+        <if test="endOfTheDate!=null">and order_time &lt; #{endOfTheDate} </if>
+        <if test="status!=null">and status = #{status} </if>
+    </select>
+    <select id="getOrderCount" resultType="java.lang.Integer">
+        select count(id) from orders
+        <where>
+            <if test="beginOfTheDate!=null">and order_time &gt; #{beginOfTheDate} </if>
+            <if test="endOfTheDate!=null">and order_time &lt; #{endOfTheDate} </if>
+            <if test="status!=null">and status = #{status} </if>
+        </where>
+    </select>
+    <select id="sumByMap" resultType="java.lang.Double">
+        select sum(amount) from orders
+        <where>
+            <if test="begin != null">
+                and order_time &gt; #{begin}
+            </if>
+            <if test="end != null">
+                and order_time &lt; #{end}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+        </where>
+    </select>
+    <select id="countByMap" resultType="java.lang.Integer">
+        select count(id) from orders
+        <where>
+            <if test="begin != null">
+                and order_time &gt; #{begin}
+            </if>
+            <if test="end != null">
+                and order_time &lt; #{end}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+        </where>
+    </select>
+</mapper>
